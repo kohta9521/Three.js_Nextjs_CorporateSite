@@ -38,9 +38,9 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 const geometry = new THREE.BoxGeometry(5, 5, 5, 10);
 const material = new THREE.MeshNormalMaterial();
 
-const torus = new THREE.Mesh(geometry, material);
-torus.position.set(0, 0.5, -15);
-torus.rotation.set(1, 1, 0);
+const box = new THREE.Mesh(geometry, material);
+box.position.set(0, 0.5, -15);
+box.rotation.set(1, 1, 0);
 scene.add(torus);
 
 /**
@@ -52,18 +52,35 @@ scene.add(torus);
  * lerp(20, 60, .75)) = 50
  * lerp(-20, -10, .1)) = -.19
  */
+function lerp(x, y, a) {
+  return (1 - a) * x + a * y;
+}
 
 /**
  * 特定のスクロール率で開始、終了
  **/
+function scaleParcent(start, end) {
+  return scrollPercent - start / (end - start);
+}
 
 /**
  * スクロールアニメーション関数定義
  */
+const animateionScripts = [];
 
 /**
  * スクロールアニメーション開始関数
  */
+animationScripts.push({
+  start: 0,
+  end: 40,
+  function() {
+    camera.loolAt(box.position);
+    camera.position.set(0, 1, 10);
+    box.position.set(0, 1, 10);
+    box.position.z = lerp(-15, 2, scaleParcent(0, 40));
+  },
+});
 
 /**
  * ブラウザのスクロール率を導出
