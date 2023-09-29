@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Official Documantation Seconds</title>
+  <meta charset="utf-8" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.152.2/build/three.module.js"
+      }
+    }
+  </script>
+  <script type="module">
+    import * as THREE from "three";
+
+    // サイズを指定
+    const width = 960;
+    const height = 540;
+
+    // レンダラーを作成
+    const renderer = new THREE.WebGLRenderer({
+      canvas: document.body.querySelector("#myCanvas")
+    });
+    renderer.setSize(width, height);
+
+    // シーンを作成
+    const scene = new THREE.Scene();
+
+    // カメラを作成
+    const camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);
+    camera.position.set(0, 0, +1000);
+
+    // 球体を作成
+    const geometry = new THREE.SphereGeometry(300, 30, 30);
+    const material = new THREE.meshStandardMaterial({color: 0xFF0000});
+    // メッシュを作成
+    const mesh = new THREE.Mesh(geometry, material);
+    // ３D空間にメッシュを作成
+    scene.add(mesh);
+
+    // 平行光源
+    const directionalLight = new THREE.DirectionalLight(0xFFFFFF);
+    directionalLight.position.set(1, 1, 1);
+    // シーンに追加
+    
+
+  </script>
+</head>
+<body>
+  <canvas id="myCanvas"></canvas>
+</body>
+</html>
